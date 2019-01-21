@@ -4,7 +4,7 @@ import pandas as pd
 import xml.etree.ElementTree as ET
 from datetime import datetime
 
-xml_files_dir_path =  'xml_files/'
+xml_files_dir_path =  'XML_FILES/'
 CSV_files_dir_path = 'CSV/'
 
 
@@ -29,7 +29,8 @@ def update_dict_types(values_dict, attributes_types_list):
 
 def create_row_list(xml_file_path, typesToCastList=None):
     """
-    list of xmlfile based on rows generator
+    generate list of xmlfile based on rows
+    #TODO: transfer to generator
     """
     document = ET.parse(xml_file_path).getroot()
     row_list = []
@@ -41,13 +42,13 @@ def create_row_list(xml_file_path, typesToCastList=None):
     return row_list
 
 
-def pandasframe_to_CSV(csv_dir, file_name, pandas_frame):
+def pandasframe_to_CSV(csv_dir, file_name, pandas_frame, separator="|"):
     """
-    export to CSV (pipe separated)
+    export to CSV
     """
     file_name = file_name.split(".xml")[0] + ".csv"   
     output =  csv_dir + file_name
-    pandas_frame.to_csv(output, index = False, sep='|', encoding='utf-8')        
+    pandas_frame.to_csv(output, index = False, sep=separator', encoding='utf-8')        
    
      
 def create_pandas_dataframe(xml_file_name, typesToCastList=None, create_CSV=True):   

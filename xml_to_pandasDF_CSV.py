@@ -51,10 +51,9 @@ def pandasframe_to_CSV(csv_dir, file_name, pandas_frame, separator="|"):
     pandas_frame.to_csv(output, index = False, sep=separator', encoding='utf-8')        
    
      
-def create_pandas_dataframe(xml_file_name, typesToCastList=None, create_CSV=True):   
+def create_pandas_dataframe(xml_file_name, typesToCastList=None, create_CSV=True):  
     """
-    funkcja tworzy ramkę pandas na podstawie listy pól (rows)
-    wywoluje rowniez funkcje twoarzącą CSV z ramki pandas gdy create_CSV = True
+    returns pandas dataframe, if create_CSV=True 
     """
     xml_file_path = xml_files_dir_path + xml_file_name
     rows = create_row_list(xml_file_path, typesToCastList)
